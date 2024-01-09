@@ -1,0 +1,40 @@
+package com.example.rock_paper_seccior
+
+fun main() {
+    var computerChoice = when ((1..3).random()) {
+        1 -> "Rock"
+        2 -> "Paper"
+        else -> "Scissors"
+    }
+
+    var playerChoice = ""
+    println("Rock, Paper, Scissors? Enter your choice!")
+
+    while (true) {
+        println("Print choice from above:")
+        val userInput = readLine() ?: ""
+
+        if (userInput in setOf("Rock", "Paper", "Scissors")) {
+            playerChoice = userInput
+            break
+        } else {
+            println("Invalid choice. Please enter Rock, Paper, or Scissors.")
+        }
+    }
+
+    println("You chose: $playerChoice")
+
+
+    println("Computer chose: $computerChoice")
+    println("You chose: $playerChoice")
+
+    val winner = when {
+        playerChoice == computerChoice -> "Tie"
+        playerChoice == "Rock" && computerChoice == "Scissors" -> "Player"
+        playerChoice == "Paper" && computerChoice == "Rock" -> "Player"
+        playerChoice == "Scissors" && computerChoice == "Paper" -> "Player"
+        else -> "Computer"
+    }
+
+    println("Winner is: $winner")
+}
